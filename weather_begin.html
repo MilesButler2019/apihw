@@ -62,12 +62,22 @@ $(document).ready(function(){
 						var temp_large = json['main']['temp_max']
 						var temp_min = json['main']['temp_min']
 						var current_temp = json['main']['temp']
-
+						if(units=='imperial'){
+						adjust_curr_temp = current_temp + ' F'
+						adjust_temp_large = temp_large + ' F'
+						adjust_temp_min = temp_min + ' F'
+						}
+						else{
+						adjust_curr_temp = current_temp + ' C'
+						adjust_temp_large = temp_large + ' C'
+						adjust_temp_min = temp_min + ' C'
+						}
 						$("#loc").html(location)
-						$("#temp").html(current_temp)
-						$("#high").html(temp_large)
-						$("#low").html(temp_min)
+						$("#temp").html(adjust_curr_temp)
+						$("#high").html(adjust_temp_large)
+						$("#low").html(adjust_temp_min)
 						$("#tempImg").attr('src','https://openweathermap.org/img/w/' + pic + ".png")
+
 						// console.log(current_temp,temp_min,temp_large,location,pic);
     })
 		$( "#forecast" ).show();
